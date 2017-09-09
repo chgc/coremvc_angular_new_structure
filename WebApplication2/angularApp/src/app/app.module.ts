@@ -21,18 +21,15 @@ const routes: Routes = [
   entryComponents: [AppComponent, MenuComponent]
 })
 export class AppModule {
-  ngDoBootstrap(app: ApplicationRef) {
-    const options = {
-      'app-root': AppComponent,
-      'app-menu': MenuComponent,
-    };
+  bootComponents = {'app-root': AppComponent, 'app-menu': MenuComponent};
 
-    const components = ['app-root', 'app-menu'];
-    components.forEach(comp => {
-      const ele = document.querySelector(comp);
-      if (ele) {
-        app.bootstrap(options[comp]);
-      }
-    });
+  ngDoBootstrap(app: ApplicationRef) {
+    Object.entries(this.bootComponents)
+        .map(([key, value]) => key)
+        .forEach(comp => {
+          if (document.querySelector(comp)) {
+            app.bootstrap(this.bootComponents[comp]);
+          }
+        });
   }
 }

@@ -115,17 +115,18 @@ var routes = [
 ];
 var AppModule = (function () {
     function AppModule() {
+        this.bootComponents = { 'app-root': __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */], 'app-menu': __WEBPACK_IMPORTED_MODULE_7__menu_menu_component__["a" /* MenuComponent */] };
     }
     AppModule.prototype.ngDoBootstrap = function (app) {
-        var options = {
-            'app-root': __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
-            'app-menu': __WEBPACK_IMPORTED_MODULE_7__menu_menu_component__["a" /* MenuComponent */],
-        };
-        var components = ['app-root', 'app-menu'];
-        components.forEach(function (comp) {
-            var ele = document.querySelector(comp);
-            if (ele) {
-                app.bootstrap(options[comp]);
+        var _this = this;
+        Object.entries(this.bootComponents)
+            .map(function (_a) {
+            var key = _a[0], value = _a[1];
+            return key;
+        })
+            .forEach(function (comp) {
+            if (document.querySelector(comp)) {
+                app.bootstrap(_this.bootComponents[comp]);
             }
         });
     };

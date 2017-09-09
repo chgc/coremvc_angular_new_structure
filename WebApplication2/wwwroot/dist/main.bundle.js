@@ -109,7 +109,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_5__home_home_component__["a" /* HomeComponent */] },
     { path: 'dash', loadChildren: 'app/dash/dash.module#DashModule' },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_4__empty_empty_component__["a" /* EmptyComponent */] }
 ];

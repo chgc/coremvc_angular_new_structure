@@ -9,7 +9,6 @@ import {MenuModule} from './menu.module';
 import {MenuComponent} from './menu/menu.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
   {path: 'dash', loadChildren: 'app/dash/dash.module#DashModule'},
   {path: '**', component: EmptyComponent}
 ];

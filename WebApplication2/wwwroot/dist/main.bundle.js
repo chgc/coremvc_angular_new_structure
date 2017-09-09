@@ -100,6 +100,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
 
 
@@ -112,20 +115,17 @@ var routes = [
     { path: 'dash', loadChildren: 'app/dash/dash.module#DashModule' },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_4__empty_empty_component__["a" /* EmptyComponent */] }
 ];
+var entryComponents = [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_7__menu_menu_component__["a" /* MenuComponent */]];
 var AppModule = (function () {
-    function AppModule() {
-        this.bootComponents = { 'app-root': __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */], 'app-menu': __WEBPACK_IMPORTED_MODULE_7__menu_menu_component__["a" /* MenuComponent */] };
+    function AppModule(componentFactoryResolver) {
+        this.componentFactoryResolver = componentFactoryResolver;
     }
     AppModule.prototype.ngDoBootstrap = function (app) {
         var _this = this;
-        Object.entries(this.bootComponents)
-            .map(function (_a) {
-            var key = _a[0], value = _a[1];
-            return key;
-        })
-            .forEach(function (comp) {
-            if (document.querySelector(comp)) {
-                app.bootstrap(_this.bootComponents[comp]);
+        entryComponents.forEach(function (component) {
+            var factory = _this.componentFactoryResolver.resolveComponentFactory(component);
+            if (document.querySelector(factory.selector)) {
+                app.bootstrap(factory.componentType);
             }
         });
     };
@@ -135,11 +135,12 @@ AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         declarations: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_5__home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_4__empty_empty_component__["a" /* EmptyComponent */]],
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(routes), __WEBPACK_IMPORTED_MODULE_6__menu_module__["a" /* MenuModule */]],
-        providers: [],
-        entryComponents: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_7__menu_menu_component__["a" /* MenuComponent */]]
-    })
+        entryComponents: entryComponents.slice()
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _a || Object])
 ], AppModule);
 
+var _a;
 //# sourceMappingURL=app.module.js.map
 
 /***/ }),

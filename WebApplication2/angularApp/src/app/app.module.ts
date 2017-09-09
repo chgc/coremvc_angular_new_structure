@@ -1,4 +1,4 @@
-import {ApplicationRef, Component, NgModule} from '@angular/core';
+import {ApplicationRef, Component, ComponentFactoryResolver, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, Routes} from '@angular/router';
 
@@ -13,22 +13,22 @@ const routes: Routes = [
   {path: '**', component: EmptyComponent}
 ];
 
+const entryComponents = [AppComponent, MenuComponent];
+
 @NgModule({
   declarations: [AppComponent, HomeComponent, EmptyComponent],
   imports: [BrowserModule, RouterModule.forRoot(routes), MenuModule],
-  providers: [],
-  entryComponents: [AppComponent, MenuComponent]
+  entryComponents: [...entryComponents]
 })
 export class AppModule {
-  bootComponents = {'app-root': AppComponent, 'app-menu': MenuComponent};
-
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
   ngDoBootstrap(app: ApplicationRef) {
-    Object.entries(this.bootComponents)
-        .map(([key, value]) => key)
-        .forEach(comp => {
-          if (document.querySelector(comp)) {
-            app.bootstrap(this.bootComponents[comp]);
-          }
-        });
+    entryComponents.forEach((component: any) => {
+      const factory =
+          this.componentFactoryResolver.resolveComponentFactory(component);
+      if (document.querySelector(factory.selector)) {
+        app.bootstrap(factory.componentType);
+      }
+    })
   }
 }

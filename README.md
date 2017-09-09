@@ -7,8 +7,11 @@ Angular與 Core MVC 新的纏綿方式
 # angulr-cli.json
 
 修改 outDir 到 mvc 專案下的 wwwroot/dist 資料夾
+
 設定 deployUrl 為 "/dist/"，只要目的是要確保輸出的 script 檔案路徑是相對於 wwwroot 的 dist 路徑
+
 修改 index 為 "<any>.html" 檔案，這個檔案只負責儲存 angular-cli 建置後的 script 檔案名稱及路徑
+
 
 # _layout.cshtml
 

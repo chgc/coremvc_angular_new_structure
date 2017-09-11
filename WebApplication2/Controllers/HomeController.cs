@@ -44,6 +44,7 @@ namespace WebApplication2.Controllers
             transferData.request = AbstractHttpContextRequestInfo(Request);
             transferData.thisCameFromDotNET = "Hi Angular it's asp.net :)";
             // Add more customData here, add it to the TransferData class
+            transferData.serverUrl = $"{Request.Scheme}://{Request.Host}";
 
             //Prerender now needs CancellationToken
             System.Threading.CancellationTokenSource cancelSource = new System.Threading.CancellationTokenSource();
@@ -97,5 +98,6 @@ namespace WebApplication2.Controllers
 
         // Your data here ?
         public object thisCameFromDotNET { get; set; }
+        public string serverUrl { get; set; }
     }
 }

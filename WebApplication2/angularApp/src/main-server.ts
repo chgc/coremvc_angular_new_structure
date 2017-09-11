@@ -30,12 +30,10 @@ export default createServerRenderer(params => {
     ngModule: AppModule,
     request: params,
     providers: [
-      /* Other providers you want to pass into the App would go here
-        *    { provide: CookieService, useClass: ServerCookieService }
-
-        * ie: Just an example of Dependency injecting a Class for providing Cookies (that you passed down from the server)
-          (Where on the browser you'd have a different class handling cookies normally)
-        */
+      {
+        provide: 'serverUrl',
+        useValue: params.data.serverUrl
+      }
     ]
   };
 

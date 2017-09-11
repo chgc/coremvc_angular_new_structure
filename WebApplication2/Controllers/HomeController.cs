@@ -35,11 +35,10 @@ namespace WebApplication2.Controllers
 
         public async Task<IActionResult> Angular()
         {
-            if (_hostingEnvironment.EnvironmentName == "Proudction")
+            if (_hostingEnvironment.EnvironmentName == "Production")
             {
                 var bundlePath = $"{_hostingEnvironment.ContentRootPath}/angularApp/dist-server/main.bundle";
                 RenderToStringResult prerenderResult = await new AngularUniversal(Request).Render(bundlePath);
-
                 ViewData["SpaHtml"] = prerenderResult.Html; // our <app> from Angular
                 ViewData["Title"] = prerenderResult.Globals["title"]; // set our <title> from Angular
                 ViewData["Styles"] = prerenderResult.Globals["styles"]; // put styles in the correct place

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.NodeServices;
 using Microsoft.AspNetCore.SpaServices.Prerendering;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication2.Models;
 
 namespace WebApplication2
 {
@@ -16,15 +11,16 @@ namespace WebApplication2
     {
         private HttpRequest _request { get; set; }
 
+
         public AngularUniversal(HttpRequest request)
         {
             this._request = request;
         }
         public async Task<RenderToStringResult> Render(string bundlePath, TransferData transferData = null)
         {
-            var nodeServices = this._request.HttpContext.RequestServices.GetRequiredService<INodeServices>();
-            var unencodedPathAndQuery = this._request.HttpContext.Features.Get<IHttpRequestFeature>().RawTarget;
-            var unencodedAbsoluteUrl = $"{this._request.Scheme}://{this._request.Host}{unencodedPathAndQuery}";
+            var nodeServices = _request.HttpContext.RequestServices.GetRequiredService<INodeServices>();
+            var unencodedPathAndQuery = _request.HttpContext.Features.Get<IHttpRequestFeature>().RawTarget;
+            var unencodedAbsoluteUrl = $"{_request.Scheme}://{_request.Host}{unencodedPathAndQuery}";
 
             // ** TransferData concept **
             // Here we can pass any Custom Data we want !
@@ -74,7 +70,7 @@ namespace WebApplication2
 
 
         // Your data here ?        
-        private IRequest AbstractHttpContextRequestInfo(HttpRequest request) => new IRequest()
+        private static IRequest AbstractHttpContextRequestInfo(HttpRequest request) => new IRequest()
         {
             cookies = request.Cookies,
             headers = request.Headers,

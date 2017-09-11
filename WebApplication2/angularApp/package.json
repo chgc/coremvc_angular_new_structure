@@ -5,8 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build":
-      "ng build --prod && ng build --prod --app universal --output-hashing=none",
+    "build": "ng build --prod && ng build --prod --app universal --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

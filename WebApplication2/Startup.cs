@@ -22,6 +22,7 @@ namespace WebApplication2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddNodeServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,8 +44,9 @@ namespace WebApplication2
 
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute("spa-fallback", "{*anything}", new { controller = "Home", action = "Angular" });
-
+                routes.MapSpaFallbackRoute(
+                               name: "spa-fallback",
+                               defaults: new { controller = "Home", action = "Angular" });
             });
         }
     }

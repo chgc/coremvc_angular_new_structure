@@ -28,7 +28,7 @@
       "name": "universal",
       "platform": "server",
       "root": "src",
-      "outDir": "../wwwroot/dist-server",
+      "outDir": "dist-server",
       "main": "main-server.ts",
       "tsconfig": "tsconfig.server.json",
       "environmentSource": "environments/environment.ts",

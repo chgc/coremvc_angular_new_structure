@@ -1,10 +1,17 @@
-import { AppModule } from './app/app.module.server';
+import 'zone.js/dist/zone-node';
 import './polyfills.server';
+
+import { AppModule } from './app/app.module.server';
 import { enableProdMode } from '@angular/core';
 import { INITIAL_CONFIG } from '@angular/platform-server';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
+import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 // ***** The ASPNETCore Angular Engine *****
-import { ngAspnetCoreEngine } from '@nguniversal/aspnetcore-engine';
+import {
+  ngAspnetCoreEngine,
+  createTransferScript,
+  IEngineOptions
+} from '@nguniversal/aspnetcore-engine';
 
 enableProdMode(); // for faster server rendered builds
 
@@ -18,8 +25,8 @@ export default createServerRenderer(params => {
      */
 
   // Platform-server provider configuration
-  const setupOptions = {
-    appSelector: '<app></app>',
+  const setupOptions: IEngineOptions = {
+    appSelector: '<app-root></app-root>',
     ngModule: AppModule,
     request: params,
     providers: [
@@ -51,9 +58,3 @@ export default createServerRenderer(params => {
     };
   });
 });
-
-export function createTransferScript(transferData: Object): string {
-  return `<script>window['TRANSFER_CACHE'] = ${JSON.stringify(
-    transferData
-  )};</script>`;
-}

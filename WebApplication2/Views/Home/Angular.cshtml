@@ -1,1 +1,6 @@
-@Html.Raw(ViewData["SpaHtml"])
+<environment names="Production">
+    @Html.Raw(ViewData["SpaHtml"])
+</environment>
+<environment names="Development">
+    <app-root></app-root>
+</environment>

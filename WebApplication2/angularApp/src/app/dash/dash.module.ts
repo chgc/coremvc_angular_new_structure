@@ -9,7 +9,7 @@ import { DashLayoutComponent } from './layout.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dash',
     component: DashLayoutComponent,
     children: [
       { path: '', component: DashComponent },

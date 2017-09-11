@@ -1,3 +1,4 @@
+import { DashModule } from './dash/dash.module';
 import { AppRoutingModule } from './app-routing.module';
 import {
   ApplicationRef,
@@ -15,6 +16,6 @@ import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, EmptyComponent],
-  imports: [BrowserModule, AppRoutingModule, MenuModule]
+  imports: [BrowserModule, MenuModule, DashModule, AppRoutingModule]
 })
 export class AppModuleShared {}

@@ -5,6 +5,10 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebApplication2</title>
+
+    @Html.Raw(ViewData["Meta"]) <!-- <meta /> tags -->
+    @Html.Raw(ViewData["Links"]) <!-- <link /> tags -->
+    @Html.Raw(ViewData["Styles"]) <!-- <styles /> tags -->
 </head>
 <body>    
     <nav>

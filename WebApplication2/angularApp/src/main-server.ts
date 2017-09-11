@@ -7,11 +7,7 @@ import { INITIAL_CONFIG } from '@angular/platform-server';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
 
 // ***** The ASPNETCore Angular Engine *****
-import {
-  ngAspnetCoreEngine,
-  createTransferScript,
-  IEngineOptions
-} from '@nguniversal/aspnetcore-engine';
+import { ngAspnetCoreEngine, createTransferScript, IEngineOptions } from '@nguniversal/aspnetcore-engine';
 
 enableProdMode(); // for faster server rendered builds
 
@@ -25,6 +21,7 @@ export default createServerRenderer(params => {
      */
 
   // Platform-server provider configuration
+  console.log(params.data);
   const setupOptions: IEngineOptions = {
     appSelector: '<app-root></app-root>',
     ngModule: AppModule,
@@ -45,9 +42,7 @@ export default createServerRenderer(params => {
     // createTransferScript() will JSON Stringify it and return it as a <script> window.TRANSFER_CACHE={}</script>
     // That your browser can pluck and grab the data from
     response.globals.transferData = createTransferScript({
-      someData:
-        'Transfer this to the client on the window.TRANSFER_CACHE {} object',
-      fromDotnet: params.data.thisCameFromDotNET // example of data coming from dotnet, in HomeController
+      someData: 'Transfer this to the client on the window.TRANSFER_CACHE {} object'
     });
 
     return {

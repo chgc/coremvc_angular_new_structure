@@ -27,8 +27,8 @@ export class AppModule {
       const factory =
           this.componentFactoryResolver.resolveComponentFactory(component);
       if (document.querySelector(factory.selector)) {
-        app.bootstrap(factory.componentType);
+        app.bootstrap(factory);
       }
-    })
+    });
   }
 }

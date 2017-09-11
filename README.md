@@ -4,7 +4,7 @@ Angular與 Core MVC 新的纏綿方式
 
 整合 Angular 與 ASP.NET MVC Core 在一起
 
-# angulr-cli.json
+# .angular-cli.json
 
 修改 outDir 到 mvc 專案下的 wwwroot/dist 資料夾
 

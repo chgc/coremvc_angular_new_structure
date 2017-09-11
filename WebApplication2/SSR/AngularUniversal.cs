@@ -74,15 +74,12 @@ namespace WebApplication2
 
 
         // Your data here ?        
-        private IRequest AbstractHttpContextRequestInfo(HttpRequest request)
+        private IRequest AbstractHttpContextRequestInfo(HttpRequest request) => new IRequest()
         {
-            return new IRequest()
-            {
-                cookies = request.Cookies,
-                headers = request.Headers,
-                host = request.Host
-            };
-        }
+            cookies = request.Cookies,
+            headers = request.Headers,
+            host = request.Host
+        };
 
     }
 }

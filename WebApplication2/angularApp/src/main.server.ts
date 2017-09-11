@@ -1,4 +1,3 @@
-import 'zone.js/dist/zone-node';
 import './polyfills.server';
 
 import { AppModule } from './app/app.module.server';

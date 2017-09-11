@@ -11,7 +11,6 @@
       "assets": ["assets", "favicon.ico"],
       "index": "script.html",
       "main": "main.ts",
-      "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
@@ -29,7 +28,7 @@
       "platform": "server",
       "root": "src",
       "outDir": "dist-server",
-      "main": "main-server.ts",
+      "main": "main.server.ts",
       "tsconfig": "tsconfig.server.json",
       "environmentSource": "environments/environment.ts",
       "environments": {

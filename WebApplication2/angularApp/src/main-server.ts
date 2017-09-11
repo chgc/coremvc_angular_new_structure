@@ -5,7 +5,7 @@ import { AppModule } from './app/app.module.server';
 import { enableProdMode } from '@angular/core';
 import { INITIAL_CONFIG } from '@angular/platform-server';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+
 // ***** The ASPNETCore Angular Engine *****
 import {
   ngAspnetCoreEngine,

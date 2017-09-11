@@ -8,10 +8,7 @@
       "root": "src",
       "outDir": "../wwwroot/dist",
       "deployUrl": "/dist/",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+      "assets": ["assets", "favicon.ico"],
       "index": "script.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -19,10 +16,21 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": [
-        "styles.css"
-      ],
+      "styles": ["styles.css"],
       "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "name": "universal",
+      "platform": "server",
+      "root": "src",
+      "outDir": "../wwwroot/dist-server",
+      "main": "main-server.ts",
+      "tsconfig": "tsconfig.server.json",
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
